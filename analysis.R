@@ -17,36 +17,36 @@ county_trends_with_btw_ratio <- incarceration_trends %>%
 
 # 1) Average ratio across all counties
 avg_btw_ratios <- county_trends_with_btw_ratio[
-  is.finite(county_trends_with_btw_ratio$btw_ratio),
-] %>%
+    is.finite(county_trends_with_btw_ratio$btw_ratio),
+  ] %>%
   group_by(year) %>%
   summarize(avg_btw_ratio = mean(btw_ratio, na.rm = TRUE))
 
 # 2) Highest ratio in 2016
 highest_btw_ratio_2016 <- county_trends_with_btw_ratio[
-  is.finite(county_trends_with_btw_ratio$btw_ratio),
-] %>%
+    is.finite(county_trends_with_btw_ratio$btw_ratio),
+  ] %>%
   filter(year == 2016) %>%
   filter(btw_ratio == max(btw_ratio, na.rm = TRUE)) %>%
   pull(btw_ratio)
 
 # 3) Highest ratio in 2016
 highest_btw_ratio_2006 <- county_trends_with_btw_ratio[
-  is.finite(county_trends_with_btw_ratio$btw_ratio),
-] %>%
+    is.finite(county_trends_with_btw_ratio$btw_ratio),
+  ] %>%
   filter(year == 2006) %>%
   filter(btw_ratio == max(btw_ratio, na.rm = TRUE)) %>%
   pull(btw_ratio)
 
 # 4) Which county/state had highest ratio in 2016
 state_with_highest_btw_ratio <- county_trends_with_btw_ratio[
-  is.finite(county_trends_with_btw_ratio$btw_ratio),
-] %>%
+    is.finite(county_trends_with_btw_ratio$btw_ratio),
+  ] %>%
   filter(btw_ratio == max(btw_ratio, na.rm = TRUE)) %>%
   pull(state)
 county_with_highest_btw_ratio <- county_trends_with_btw_ratio[
-  is.finite(county_trends_with_btw_ratio$btw_ratio),
-] %>%
+    is.finite(county_trends_with_btw_ratio$btw_ratio),
+  ] %>%
   filter(btw_ratio == max(btw_ratio, na.rm = TRUE)) %>%
   pull(county_name) %>%
   paste0(", ", state_with_highest_btw_ratio)

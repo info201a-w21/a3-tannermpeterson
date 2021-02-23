@@ -1,0 +1,42 @@
+---
+title: "HW 3"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(knitr)
+source("analysis.R")
+```
+
+
+# Values
+
+```{r echo = F}
+avg_btw_ratios
+highest_btw_ratio_2016
+highest_btw_ratio_2006
+county_with_highest_btw_ratio
+change_in_btw_ratio_10_yrs
+```
+
+
+# Chart 1
+
+```{r echo = F}
+rate_over_time
+```
+
+
+# Chart 2
+
+```{r echo = F}
+b_vs_w_pop_rate
+```
+
+
+# Map
+
+```{r echo = F}
+black_incarceration_rate_map
+```
