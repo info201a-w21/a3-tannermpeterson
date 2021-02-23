@@ -5,8 +5,8 @@ incarceration_trends <- read.csv("https://raw.githubusercontent.com/vera-institu
 # Load tidyverse
 library("tidyverse")
 
-# Value of interest: Ratio of incarcerations of black people
-# to incarcerations of to white people
+# Value of interest: Ratio of rate of incarcerations of black people
+# to rate of incarcerations of white people
 county_trends_with_btw_ratio <- incarceration_trends %>%
   mutate(btw_ratio = (black_prison_pop / black_pop_15to64) / (white_prison_pop / white_pop_15to64))
 
@@ -45,3 +45,30 @@ avg_btw_ratios_2016 <- avg_btw_ratios %>%
   pull(avg_btw_ratio)
 change_in_btw_ratio_10_yrs <- avg_btw_ratios_2016 - avg_btw_ratios_2006
 
+
+# Load ggplot2
+library("ggplot2")
+
+# Chart 1: Rate of incarceration by race over time
+avg_rates_over_time <- incarceration_trends %>%
+  group_by(year) %>%
+  filter(year >= 1990 && year <= 2016) %>%
+  summarize(
+    avg_white_rate = mean(white_prison_pop_rate, na.rm = TRUE),
+    avg_black_rate = mean(black_prison_pop_rate, na.rm = TRUE),
+    avg_latinx_rate = mean(latinx_prison_pop_rate, na.rm = TRUE),
+    avg_aapi_rate = mean(aapi_prison_pop_rate, na.rm = TRUE),
+    avg_native_rate = mean(native_prison_pop_rate, na.rm = TRUE),
+  )
+ggplot(data = avg_rates_over_time) +
+  geom_line(mapping = aes(x = year, y = avg_white_rate, color = "White")) +
+  geom_line(mapping = aes(x = year, y = avg_black_rate, color = "Black")) +
+  geom_line(mapping = aes(x = year, y = avg_latinx_rate, color = "Latinx")) +
+  geom_line(mapping = aes(x = year, y = avg_aapi_rate, color = "AAPI")) +
+  geom_line(mapping = aes(x = year, y = avg_native_rate, color = "Native")) +
+  labs(
+    title = "Average Incarcerated Population Rates by Race Over Time",
+    x = "Year",
+    y = "Average Incarcerated Population Rate (age 15-64)",
+    color = "Race"
+  )
