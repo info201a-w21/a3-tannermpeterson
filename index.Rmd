@@ -9,6 +9,13 @@ library(knitr)
 source("analysis.R")
 ```
 
+One of the most pressing issues in America today is the disproportionate 
+rates of incarceration of POC. To better understand this issue, I am going to 
+analyze the ratio of average incarceration rates by US regions of black 
+populations to white populations. This will show just *how much* more likely a
+POC are to be incarcerated than white people are.
+
+
 
 # Values
 
@@ -23,6 +30,8 @@ change_in_btw_ratio_10_yrs
 
 # Chart 1
 
+This chart shows how these rates are changing over time.
+
 ```{r echo = F}
 rate_over_time
 ```
@@ -30,12 +39,18 @@ rate_over_time
 
 # Chart 2
 
+This chart shows how as the incarceration rate of white people increases in
+communities, the incarceration rate of black people increases by even more.
+
 ```{r echo = F}
 b_vs_w_pop_rate
 ```
 
 
 # Map
+
+This map shows the rates by county in Washington State.
+
 
 ```{r echo = F}
 black_incarceration_rate_map
