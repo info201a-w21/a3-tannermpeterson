@@ -9,6 +9,9 @@ library(knitr)
 source("analysis.R")
 ```
 
+
+# Intro
+
 One of the most pressing issues in America today is the disproportionate 
 rates of incarceration of POC. To better understand this issue, I am going to 
 analyze the ratio of average incarceration rates by US regions of black 
