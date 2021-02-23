@@ -69,6 +69,21 @@ ggplot(data = avg_rates_over_time) +
   labs(
     title = "Average Incarcerated Population Rates by Race Over Time",
     x = "Year",
-    y = "Average Incarcerated Population Rate (age 15-64)",
+    y = "Average Incarcerated Population Rate (age 15-64) per 100,000",
     color = "Race"
   )
+
+
+# Chart 2: Comparing incarceration rates of black population vs. white population
+ggplot(data = avg_rates_over_time) +
+  geom_point(mapping = aes(x = avg_white_rate, y = avg_black_rate, color = "Black/White Ratio")) +
+  geom_abline(mapping = aes(intercept = 0, slope = 1, color = "1:1 ratio")) +
+  ylim(0, 4000) + xlim (0, 600) +
+  labs(
+    title = "Comparison of Black vs. White Incarcerated Population Rates",
+    x = "Average Incarcerated White Population Rate (age 15-64) per 100,000",
+    y = "Average Incarcerated Black Population Rate (age 15-64) per 100,000",
+    color = NULL
+  )
+
+
