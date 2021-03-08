@@ -19,42 +19,49 @@ populations to white populations. This will show just *how much* more likely a
 POC are to be incarcerated than white people are.
 
 
-
 # Values
 
-```{r echo = F}
-avg_btw_ratios
-highest_btw_ratio_2016
-highest_btw_ratio_2006
-county_with_highest_btw_ratio
-change_in_btw_ratio_10_yrs
-```
+This section will present some values/patterns that arose during this 
+investigation. The average ratio of incarceration rate of black Americans to
+that of white Americans per year is shown in the table below:
+`r kable(avg_btw_ratios)` The highest ratio in a single county in 2006 is
+`r highest_btw_ratio_2006`. This can be compared the highest ratio in 2016 which
+was `r highest_btw_ratio_2016`. The County and State which held this ratio was
+`r county_with_highest_btw_ratio`. The change in average the ratio over most 
+recent 10 years across all counties is `r change_in_btw_ratio_10_yrs`.
 
 
-# Chart 1
-
-This chart shows how these rates are changing over time.
+# Trend Over Time
 
 ```{r echo = F}
 rate_over_time
 ```
 
+This chart shows how the average incarceration rates of various 5 races
+in America have changed from 1990 to 2016.
+While the rate for each race seems to be trending upward, it can be seen
+the rate of black Americans is significantly higher than that of any other race.
+It should also be noted that the rate for white Americans is one of the lowest.
 
-# Chart 2
 
-This chart shows how as the incarceration rate of white people increases in
-communities, the incarceration rate of black people increases by even more.
+# Comparing Statistics
 
 ```{r echo = F}
 b_vs_w_pop_rate
 ```
 
+This purpose of this chart is to visualize how as the incarceration rate of
+white Americans increases in communities, the incarceration rate of black
+Americans increases by even more. The **1:1 ratio** line is included as a
+point of reference of how far off these values are from being an even.
 
-# Map
 
-This map shows the rates by county in Washington State.
-
+# Mapping The Issue in Washington State
 
 ```{r echo = F}
 black_incarceration_rate_map
 ```
+
+This map shows the incarceration rate of the black population by county
+in Washington State. The purpose of this is to show where the problem is the
+most prevalent in our home state.

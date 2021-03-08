@@ -5,8 +5,8 @@ incarceration_trends <- read.csv("https://raw.githubusercontent.com/vera-institu
 # Load tidyverse
 library("tidyverse")
 
-# Value of interest: Ratio of rate of incarcerations of black people
-# to rate of incarcerations of white people
+# Value of interest: Ratio of rate of incarcerations of black Americans
+# to rate of incarcerations of white Americans
 county_trends_with_btw_ratio <- incarceration_trends %>%
   mutate(
     btw_ratio = (
@@ -30,7 +30,7 @@ highest_btw_ratio_2016 <- county_trends_with_btw_ratio[
   filter(btw_ratio == max(btw_ratio, na.rm = TRUE)) %>%
   pull(btw_ratio)
 
-# 3) Highest ratio in 2016
+# 3) Highest ratio in 2006
 highest_btw_ratio_2006 <- county_trends_with_btw_ratio[
     is.finite(county_trends_with_btw_ratio$btw_ratio),
   ] %>%
@@ -150,7 +150,8 @@ black_incarceration_rate_map <- ggplot(map_data) +
     limits = c(0, max(map_data$black_prison_pop_rate)),
     na.value = "white",
     low = "yellow",
-    high = "red"
+    high = "red",
   ) +
+  labs(fill = "Black Prison Pop. Rate") +
   blank_theme +
   ggtitle("Incarceration Rate of Black Population in WA by County")
